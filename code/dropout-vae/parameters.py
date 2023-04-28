@@ -9,7 +9,7 @@ embedding_size = 300
 latent_size = 100
 encoder_layers = 3
 decoder_layers = 4
-rec_coef = 8
+rec_coef = 10
 kld_coef = 0.001
 learning_rate = 0.0001
 
