@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchtext.legacy import data
 
-from utils.dropout_vae.parameters import hidden_layer_size, decoder_layers, embedding_size, to_cuda, latent_size, vocabulary_size
+from parameters import hidden_layer_size, decoder_layers, embedding_size, to_cuda, latent_size, vocabulary_size
 
 class Decoder(nn.Module):
     def __init__(self):

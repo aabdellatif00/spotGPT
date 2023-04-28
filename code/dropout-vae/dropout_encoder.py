@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torchtext.legacy import data
 
-from utils.dropout_vae.parameters import hidden_layer_size, encoder_layers, embedding_size, to_cuda
+from parameters import hidden_layer_size, encoder_layers, embedding_size, to_cuda
 
 class Encoder(nn.Module):
     def __init__(self):

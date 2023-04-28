@@ -68,6 +68,8 @@ instance/
 # Scrapy stuff:
 .scrapy
 
+code/dropout-vae/.vector_cache/
+
 # Sphinx documentation
 docs/_build/
 
