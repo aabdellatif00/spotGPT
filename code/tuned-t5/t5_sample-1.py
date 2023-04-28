@@ -16,7 +16,9 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 import torch
 from scoring import get_log_probability, get_likelihood_ratio
 from sklearn.model_selection import train_test_split
-
+import numpy 
+import seaborn
+import matplotlib.pyplot as plt
 data = pd.read_csv("drive/MyDrive/GPT-wiki-intro.csv")
 
 # create a DataFrame from the list of dictionaries
@@ -131,9 +133,23 @@ for idx, row in plot_dataframe.iterrows():
     probability_ratios[idx] = probability_ratio
 plot_dataframe['probability_ratio'] = probability_ratios
 
-import numpy 
-import seaborn
-from matplotlib import pyplot 
+
 MGT = plot_dataframe[plot_dataframe['Type'] == "MGT"]["probability_ratio"]
 HGT = plot_dataframe[plot_dataframe['Type'] == "HGT"]["probability_ratio"]
+
+fig, ax = plt.subplots()
+
+sns.kdeplot(data = plot_dataframe, 
+                x = "probability_ratio", 
+                hue = "Type",
+                fill=True, 
+                common_norm=False, 
+                alpha=.5, 
+                linewidth=0,
+                ax = ax
+).set(title='Density of Probability Ratio Scores (T5)', 
+      xlabel='Probability Ratio Score', 
+      ylabel='Density')
+ax.set_xlim(0, 20000)
+plt.savefig("density_estimate_t5.png")
 
